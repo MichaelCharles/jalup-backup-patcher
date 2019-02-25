@@ -1,3 +1,9 @@
+.futura-pt {
+    font-family: futura-pt, Helvetica, arial, sans-serif;
+    font-weight: 400;
+    font-size: 42px;
+}
+
 .fixed-button-width {
     width: 100%;
 }
@@ -24,4 +30,24 @@
     width: 100%;
     display: block;
     margin: 0 auto;
+}
+
+.download-button, .file-cta {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+textarea {
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    scrollbar-color: grey white;
+    scrollbar-width: thin;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .7s;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
 }
