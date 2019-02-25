@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Jalup Backup Patcher</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="section">
+        <span class="container">
+          <h1 class="title">Jalup Backup Patcher</h1>
+          <h2 class="subtitle">
+            A web interface for patching your exported Jalup app data with the
+            JalupNEXT web app data you received from Adam.
+          </h2>
+          <span class="upload-area" v-if="mergedText == ''">
+            <div class="field">
+              <p>
+                Click on the button to upload your backup of the
+                <strong>JalupNEXT web app</strong> which you received from Adam.
+              </p>
+            </div>
+
+            <div class="file is-info is-fullwidth">
+              <label class="file-label">
+                <input
+                  id="webFileInput"
+                  class="file-input"
+                  type="file"
+                  @change="updateWebFromFile"
+                />
+                <span class="file-cta fixed-button-width">
+                  <span class="file-icon">
+                    <i class="fa fa-upload"></i>
+                  </span>
+                  <span class="file-label">
+                    JalupNEXT Backup
+                  </span>
+                </span>
+              </label>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <textarea
+                  v-model="webText"
+                  class="textarea is-info"
+                  placeholder="Upload CSV data or copy and paste here..."
+                  >{{ webText }}</textarea
+                >
+              </div>
+            </div>
+            <div class="field">
+              <p>
+                Click on the button to upload the file you exported from the
+                <strong>Jalup phone app</strong>. Make sure you have restored your previous purchases before exporting the data. If you fail to do so, data for those decks will not be patched.
+              </p>
+            </div>
+
+            <div class="file is-warning is-fullwidth">
+              <label class="file-label">
+                <input
+                  id="appFileInput"
+                  class="file-input"
+                  type="file"
+                  @change="updateAppFromFile"
+                />
+                <span class="file-cta fixed-button-width">
+                  <span class="file-icon">
+                    <i class="fa fa-upload"></i>
+                  </span>
+                  <span class="file-label">
+                    Exported Jalup App File
+                  </span>
+                </span>
+              </label>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <textarea
+                  v-model="appText"
+                  class="textarea is-warning"
+                  placeholder="Upload CSV data or copy and paste here..."
+                  >{{ appText }}</textarea
+                >
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <button class="button is-primary" @click="mergeFiles()">
+                  <i class="fa fa-compress"></i>&nbsp;&nbsp;Merge
+                </button>
+              </div>
+            </div>
+          </span>
+
+          <span class="merged-area" v-if="mergedText != ''">
+            <div class="columns">
+              <div class="flex-centered">
+                <img
+                  src="https://res.cloudinary.com/mca62511/image/upload/v1551068729/happy_tmndgz.jpg"
+                  class="happy-success"
+                />
+              </div>
+              <div class="column flex-centered">
+                <h1>
+                  <strong class="has-text-success">Congratulations!</strong> -
+                  We've merged the two files. If this process was carried out
+                  correctly, you should be able to import this into the phone
+                  app. Click on the button labeled "Download Merged File" or
+                  copy and paste the contents of the text box below.
+                </h1>
+              </div>
+            </div>
+
+            <div class="control">
+              <button
+                class="button is-success is-fullwidth"
+                @click="download()"
+              >
+                <i class="fa fa-download"></i>&nbsp;&nbsp;Download Merged File
+              </button>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <textarea
+                  class="textarea is-success"
+                  placeholder="Success textarea"
+                  >{{ mergedText }}</textarea
+                >
+              </div>
+            </div>
+          </span>
+        </span>
+      </div>
+      <div class="footer">
+        <span class="container">
+          <a href="http://michaelcharl.es/aubrey" target="_blank">Michael Charles Aubrey</a>, the author of the Jalup Backup Patcher, is not
+          affiliated with Japanese Level Up LLC. This product is provided as-is
+          with no implied warranty or garuntee and the author will not take
+          responsibility for any loss of data. Please make sure you have backups of your data before use.
+        </span>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.min.js"></script>
+    <script src="js/FileSaver.js"></script>
+
+    <script src="js/index.js"></script>
+  </body>
+</html>

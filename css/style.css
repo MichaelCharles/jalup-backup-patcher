@@ -1,0 +1,27 @@
+.fixed-button-width {
+    width: 100%;
+}
+
+.happy-success {
+    max-width: 145px;
+}
+
+.flex-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+}
+
+.container {
+    max-width: 1000px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
