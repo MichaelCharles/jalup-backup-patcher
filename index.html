@@ -31,7 +31,7 @@
             A web interface for patching your exported Jalup app data with the
             JalupNEXT web app data you received from Adam.
           </h2>
-          <span class="upload-area" v-if="mergedText == ''">
+          <span id="upload-area" v-if="mergedText == ''">
             <div class="field">
               <p>
                 Click on the button to upload your backup of the
@@ -114,7 +114,7 @@
           </span>
 
           <transition name="fade">
-          <span class="merged-area" v-if="mergedText != ''">
+          <span id="merged-area" v-if="mergedText != ''">
             <div class="columns">
               <div class="flex-centered">
                 <img
